@@ -3,10 +3,10 @@
 #include <string.h>
 #include "lists.h"
 /**
- *listint_t  print all the elements of a list.
+ *print_listint_t - print all the elements of a list.
  *@h: pointer to the listint_t list.
  *
- *Return :number of nodes
+ *Return :number of nodes in the  list
  */
 size_t print_listint(const listint_t *h)
 {
@@ -16,7 +16,7 @@ size_t print_listint(const listint_t *h)
 	{
 	printf("%d\n", h->n);
 	n++;
-        h = h->next;
+	h = h->next;
 	}
 	return (n);
 }
