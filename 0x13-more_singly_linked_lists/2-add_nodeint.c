@@ -3,6 +3,7 @@
 /**
  * add_nodeint  - add a new node at the beginning of a listint_t list
  * @head: pointer to the head of a listint_t
+ * @n: value of new_node
  *
  * Return: the address of the  new element, or null if it failed
  */
@@ -14,13 +15,17 @@ listint_t *add_nodeint(listint_t **head, const int n)
 	new_node = malloc(sizeof(listint_t));
 
 	if (new_node == NULL)
-		return NULL;
+	{
+		new_node == NULL;
+		return (NULL);
+	}
+	while (new_node = n)
+	{
+		new_node->n =  n;
+		new_node->next = *head;
 
-	new_node->n =  n;
-	new_node->next = *head;
-
-	*head = new_node;
-
+		*head = new_node;
+	}
 
 	return (new_node);
 }
