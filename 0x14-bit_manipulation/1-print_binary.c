@@ -3,6 +3,7 @@
 /**
  * print_binary - prints the binary representation of a number.
  * @n: prenset the number binary
+ *
  */
 
 void print_binary(unsigned long int n)
@@ -12,7 +13,7 @@ void print_binary(unsigned long int n)
 
 	while ((mask << 1) <= n)
 	{
-		(mask <<= (1));
+		(mask <<= 1);
 		bit_count++;
 	}
 
@@ -23,6 +24,6 @@ void print_binary(unsigned long int n)
 		else
 			putchar('0');
 
-		(mask >>= (1));
+		(mask >>= 1);
 	}
 }
