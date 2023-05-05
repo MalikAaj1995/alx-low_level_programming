@@ -20,9 +20,9 @@ void print_binary(unsigned long int n)
 	{
 		if (n & mask)
 			putchar('1');
-	else
+		else
 			putchar('0');
 
-	(mask >>= (1));
+		(mask >>= (1));
 	}
 }
