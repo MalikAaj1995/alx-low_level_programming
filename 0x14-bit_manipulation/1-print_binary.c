@@ -14,10 +14,8 @@ void print_binary(unsigned long int n)
 
 	for (i = size - 1; i != (size_t)-1; i--)
 	{
-		if ((n >> i) & 1)
-		{
-			break;
-		}
+	if ((n >> i) & 1)
+		break;
 	}
 	for (; i != (size_t)-1; i--)
 	{
