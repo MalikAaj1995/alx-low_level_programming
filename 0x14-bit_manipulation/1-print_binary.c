@@ -8,18 +8,18 @@
 
 void print_binary(unsigned long int n)
 {
-	int size = sizeof(n) * 8;
-	int i;
-	int bit;
+	size_t size = sizeof(n) * 8;
+	size_t i;
+	unsigned long int bit;
 
-	for (i = size - 1; i >= 0; i--)
+	for (i = size - 1; i != (size_t)-1; i--)
 	{
 		if ((n >> i) & 1)
 		{
 			break;
 		}
 	}
-	for (; i >= 0; i--)
+	for (; i != (size_t)-1; i--)
 	{
 		bit = (n >> i) & 1;
 		putchar(bit ? '1' : '0');
