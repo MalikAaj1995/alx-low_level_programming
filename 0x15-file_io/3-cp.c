@@ -12,7 +12,7 @@
  */
 void err_exit(int exit_code, char *format, char *arg)
 {
-	fprintf(stderr, format, arg);
+	dprintf(STDERR_FILENO, format, arg);
 	exit(exit_code);
 }
 /**
@@ -29,14 +29,14 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		fprintf(stderr, "Usage: %s file_from file_to\n", argv[0]);
+		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
 		exit(97);
 	}
 	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
+	if (fd_from < 0)
 		err_exit(98, "Error: Can't read from file %s\n", argv[1]);
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd_to == -1)
+	if (fd_to < 0)
 		err_exit(99, "Error: Can't write to file %s\n", argv[2]);
 	while (bytes_read == 1024)
 	{
@@ -53,12 +53,12 @@ int main(int argc, char *argv[])
 	}
 	if (close(fd_from) < 0)
 	{
-		fprintf(stderr, "Error: Can't close fd %d\n", fd_from);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
 		exit(100);
 	}
 	if (close(fd_to) < 0)
 	{
-		fprintf(stderr, "Error: Can't close fd %d\n", fd_to);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
 		exit(100);
 	}
 	return (0);
