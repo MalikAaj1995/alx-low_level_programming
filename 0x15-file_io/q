@@ -22,7 +22,7 @@ void err_exit(int exit_code, char *format, char *arg)
  * Return: always 0 in success
  */
 int main(int argc, char **argv)
-{
+
 	int from, to, wr, rd = 1024;
 	char buf[1024];
 
@@ -60,5 +60,6 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", to);
 		exit(100);
 	}
-	return (0);
+	return(0);
+
 }
