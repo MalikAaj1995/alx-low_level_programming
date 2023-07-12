@@ -4,7 +4,8 @@
 
 /**
  * main - check the code
- *
+ * @ac: argument counting
+ * @av: argument victor
  * Return: Always 0.
  */
 int main(int ac, char **av)
