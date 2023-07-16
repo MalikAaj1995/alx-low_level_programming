@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include "main.h"
 /**
  * create_file - that creates a file.
@@ -10,32 +14,27 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	FILE *fp;
+	int file, len = 0;
 
 	if (filename == NULL)
 	{
 		return (-1);
 	}
+	if (text_content == NULL)
+	{
+		text_content = "";
+	}
+	while (text_content[len] != '\0')
+		len++;
 
-	fp = fopen(filename, "w");
-	if (fp == NULL)
+	file = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+
+	if (file == -1)
 	{
 		return (-1);
 	}
-	if (text_content != NULL)
-	{
-	size_t content_length = strlen(text_content);
+	write(file, text_content, len);
 
-	if (fwrite(text_content, sizeof(char), content_length, fp) != content_length)
-	{
-		fclose(fp);
-		return (-1);
-	}
-	}
-
-	if (fclose(fp) != 0)
-	{
-		return (-1);
-	}
+	close(file);
 	return (1);
 }
