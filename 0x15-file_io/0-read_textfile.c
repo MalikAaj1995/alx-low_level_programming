@@ -28,6 +28,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buffer == NULL)
 	{
 		fclose(fp);
+		fprintf(stderr, "Error: Memory allocation failed.\n");
 		return (0);
 	}
 
